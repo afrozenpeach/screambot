@@ -10,10 +10,21 @@ module.exports = {
                 .setName('minutes')
                 .setDescription('The number of minutes before you are screamed at.')
                 .setRequired(true)
+        )
+        .addBooleanOption(option =>
+            option
+                .setName('autoreport')
+                .setDescription('Any message in the current channel will count as reporting progress.')
         ),
 	async execute(interaction, sm) {
         const minutes = interaction.options.getInteger('minutes');
-        let scream = new Scream(interaction.user, minutes, interaction.channel);
+        let autoReport = interaction.options.getBoolean('autoreport');
+
+        if (autoReport !== true) {
+            autoReport = false;
+        }
+
+        let scream = new Scream(interaction.user, minutes, interaction.channel, autoReport);
         sm.addScream(scream);
 
 		await interaction.reply({

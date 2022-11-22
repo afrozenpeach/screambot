@@ -24,4 +24,8 @@ module.exports = class ScreamManager {
             timeout.setTimeout();
         }
     }
+
+    getUserScreams(userId) {
+        return this.screams.filter(el => el.getUser().id === userId);
+    }
 }

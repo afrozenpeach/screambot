@@ -1,8 +1,9 @@
 module.exports = class Scream {
-    constructor(user, minutes, channel) {
+    constructor(user, minutes, channel, autoReport) {
         this.user = user;
         this.minutes = minutes;
         this.channel = channel;
+        this.autoReport = autoReport;
         this.timeouts = [];
 
         this.setTimeout();
@@ -14,6 +15,14 @@ module.exports = class Scream {
 
     getMinutes() {
         return this.minutes;
+    }
+
+    getChannel() {
+        return this.channel;
+    }
+
+    getAutoReport() {
+        return this.autoReport;
     }
 
     setTimeout() {

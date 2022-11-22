@@ -6,7 +6,7 @@ const { token } = require('./config.json');
 const ScreamManager = require('./modules/scream-manager.js');
 
 // Create a new client instance
-const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.MessageContent] });
+const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent] });
 const sm = new ScreamManager();
 
 // When the client is ready, run this code (only once)
@@ -51,3 +51,13 @@ client.on(Events.InteractionCreate, async interaction => {
 		await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
 	}
 });
+
+client.on(Events.MessageCreate, async message => {
+    let userId = message.author.id;
+
+    for (let scream of sm.getUserScreams(userId)) {
+        if (message.channelId === scream.getChannel().id && scream.getAutoReport()) {
+            scream.setTimeout();
+        }
+    }
+})
