@@ -1,0 +1,25 @@
+{
+  "name": "screambot",
+  "version": "1.0.0",
+  "description": "Discord bot that screams every few minutes",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/afrozenpeach/screambot.git"
+  },
+  "author": "Mattie Schraeder",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/afrozenpeach/screambot/issues"
+  },
+  "homepage": "https://github.com/afrozenpeach/screambot#readme",
+  "dependencies": {
+    "discord.js": "^14.6.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.28.0"
+  }
+}
