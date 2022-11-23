@@ -3,17 +3,11 @@ const { SlashCommandBuilder } = require('discord.js');
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('report')
-		.setDescription('Reports your progress to stop the screaming temporarily.')
-		.addStringOption(option =>
-			option
-				.setName('progress')
-				.setDescription('The progress you want to report.')
-		),
+		.setDescription('Reports your progress to stop the screaming temporarily.'),
 	async execute(interaction, sm) {
-        const progress = interaction.options.getString('progress');
 		const userId = interaction.user.id;
 
-		await interaction.reply({content: `${interaction.user.toString()} reported their progress!\n\n${progress}`, ephemeral: true});
+		await interaction.reply({content: `Progress reported. Scream Timers are reset. `, ephemeral: true});
 
 		sm.resetTimeouts(userId);
 	},
