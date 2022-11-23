@@ -13,7 +13,7 @@ module.exports = {
         const progress = interaction.options.getString('progress');
 		const userId = interaction.user.id;
 
-		await interaction.reply({content: `${interaction.user.toString()} reported their progress!\n\n${progress}`, ephemeral: false});
+		await interaction.reply({content: `${interaction.user.toString()} reported their progress!\n\n${progress}`, ephemeral: true});
 
 		sm.resetTimeouts(userId);
 	},
